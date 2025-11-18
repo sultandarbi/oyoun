@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>منصة عيون: لأجل عينيك ومن تحب</title>
+    <link
+        href="https://us-tiangong-data.oss-accelerate.aliyuncs.com/doc/gemini_css/table.css?OSSAccessKeyId=LTAI5tGmBYBVtG6Cxb4BaviJ&amp;Expires=4914044665&amp;Signature=X%2F%2BipJztge3UJ3Ojq5wcxRk%2F7zk%3D"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" rel="stylesheet" />
+    <link
+        href="https://us-tiangong-data.oss-accelerate.aliyuncs.com/doc/gemini_css/technology_blue_and_green.css?OSSAccessKeyId=LTAI5tGmBYBVtG6Cxb4BaviJ&amp;Expires=4914044129&amp;Signature=78%2F5NVyh5wfcGSSPorJhSJUs06o%3D"
+        rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script
+        src="https://us-tiangong-data.oss-accelerate.aliyuncs.com/doc/gemini_css/macarons_v2.js?OSSAccessKeyId=LTAI5tGmBYBVtG6Cxb4BaviJ&amp;Expires=4914188330&amp;Signature=mE%2FFv6owOnvs%2FB7rWTRxwD9tj9M%3D"></script>
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 24px 40px;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .chart-container {
+            position: relative;
+            margin: 3em auto;
+            max-width: 700px;
+            min-height: 200px;
+            max-height: 400px;
+            width: 100%;
+            height: auto;
+            overflow: visible;
+            aspect-ratio: 7/5;
+        }
+
+        img {
+            display: block;
+            overflow: hidden;
+            max-width: 100%;
+            max-height: 280px;
+            margin: 1em auto;
+            border-radius: 8px;
+        }
+
+        h4 {
+            font-size: 18px;
+        }
+
+        h5 {
+            font-size: 16px;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #fdfdfd;
+            margin: 0 24px 0 24px;
+            padding: 0;
+            direction: rtl;
+            text-align: right;
+            font-size: 16px;
+            max-width: None;
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.3;
+            font-size: 28px;
+            margin-top: 24px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: 24px;
+        }
+
+        h2 {
+            font-size: 22px;
+            border-bottom: 2px solid #005f73;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 20px;
+            margin-top: 30px;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-right: 20px;
+        }
+
+        ul li {
+            position: relative;
+            padding-right: 30px;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        ul li::before {
+            content: "✓";
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: #0a9396;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .contact-section {
+            background-color: #e9f5f5;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 40px;
+            border: 1px solid #cae8e8;
+        }
+
+        .contact-section p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        strong {}
+
+        .step-guide {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .step {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid #cae8e8;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .step:hover {
+            transform: translatey(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #005f73;
+            margin-bottom: 10px;
+        }
+
+        .chart-container canvas {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain;
+        }
+
+        @media only screen and (max-device-width: 768px) {
+            body {
+                padding: 0;
+                margin: 0;
+                font-size: 15px;
+                line-height: 1.5;
+            }
+
+            .container {
+                padding: 0;
+                margin: 16px 20px 30px;
+                box-shadow: none;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4 {}
+
+            h1 {
+                font-size: 1.87em;
+                line-height: 1.6;
+                margin-bottom: 0.5em;
+                text-align: center;
+            }
+
+            h2 {
+                font-size: 1.6em;
+                font-weight: 600;
+                margin-top: 1.3em;
+                margin-bottom: 0.8em;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 0.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                font-weight: 600;
+                margin-top: 1em;
+                margin-bottom: 0.6em;
+            }
+
+            h4 {
+                font-size: 1.1em;
+                font-weight: 500;
+                margin-top: 1em;
+                margin-bottom: 0.5em;
+                font-style: normal;
+            }
+
+            h5 {
+                font-size: 1em;
+                font-weight: 500;
+                margin-bottom: 1.2em;
+            }
+
+            ul,
+            ol {
+                font-size: 1em;
+                /* Equivalent to 17.6px if base is 16px */
+                font-weight: 400;
+                margin-bottom: 1.2em;
+                line-height: 1.8;
+            }
+
+            p {
+                font-size: 1em;
+                line-height: 1.8;
+                /* Equivalent to 17.6px if base is 16px */
+                font-weight: 400;
+                margin-top: 0.8em;
+                margin-bottom: 0.8em;
+            }
+
+            blockquote {
+                padding: 1em 1.2em;
+
+                p {
+                    margin: 0;
+                }
+            }
+
+            figcaption {
+                margin-top: 0.5em;
+                font-size: 0.8em;
+                /* Equivalent to 17.6px if base is 16px */
+                font-weight: 400;
+                text-align: center;
+                font-style: normal;
+                color: #7F8896;
+            }
+
+            img {
+                display: block;
+                overflow: hidden;
+                max-width: 100%;
+                max-height: 335px;
+                margin: 1em auto;
+                border-radius: 8px;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="section-1">منصة العيون: الحل الذكي لقطاع العيون</h1>
+        <p>مرحبًا بكم في <strong>منصة العيون</strong>، المنصة الرقمية الأولى من نوعها والمصممة خصيصًا لربط جميع أطراف
+            قطاع خدمات العيون في مكان واحد. نحن نشكل حلقة وصل متكاملة تجمع بين مختلف مقدمي الخدمات والمستخدمين الباحثين
+            عن حلول بصرية موثوقة وسريعة.</p>
+        <h2 id="section-1">من نحن؟</h2>
+        <p>نحن منصة متخصصة تجمع تحت سقف واحد:</p>
+        <ul>
+            <li>عيادات العيون المتخصصة</li>
+            <li>المستشفيات ومراكز البصريات</li>
+            <li>محلات النظارات والعدسات اللاصقة</li>
+            <li>العملاء الباحثين عن خدمات بصرية عالية الجودة</li>
+        </ul>
+        <p>هدفنا هو تسهيل الوصول إلى الخدمات، تعزيز ظهور مقدمي الخدمة، وتقديم تجربة مستخدم سلسة وفعالة للجميع.</p>
+        <h2 id="section-2">ماذا نقدم لكم كمقدمي خدمة؟</h2>
+        <p>عند انضمامكم إلى منصتنا، تحصلون على مجموعة من الأدوات الفعالة لتنمية أعمالكم والوصول إلى شريحة أوسع من
+            العملاء:</p>
+        <ul>
+            <li><strong>صفحة خاصة للمنشأة:</strong> ملف تعريفي متكامل داخل التطبيق لعرض هويتكم وخدماتكم بشكل احترافي.
+            </li>
+            <li><strong>عرض الخدمات والمنتجات:</strong> مساحة مخصصة لعرض تفاصيل خدماتكم الطبية ومنتجاتكم البصرية بوضوح.
+            </li>
+            <li><strong>استقبال الحجوزات بسهولة:</strong> نظام حجوزات مبسط يتيح للعملاء حجز المواعيد مباشرة عبر التطبيق.
+            </li>
+            <li><strong>نشر العروض والإعلانات:</strong> أداة تسويقية قوية للإعلان عن العروض الخاصة والحملات الترويجية.
+            </li>
+            <li><strong>زيادة الظهور والوصول:</strong> فرصة للوصول إلى عملاء جدد يبحثون بنشاط عن خدماتكم في محيطهم.</li>
+        </ul>
+        <div class="chart-container" id="canvas-parent-1">
+            <canvas id="impactChart"></canvas>
+        </div>
+        <h2 id="section-3">مميزات المنصة</h2>
+        <p>صممنا المنصة لتكون شريككم الأمثل في النجاح، وذلك من خلال توفير الميزات التالية:</p>
+        <ul>
+            <li><strong>واجهة سهلة الاستخدام:</strong> تصميم بسيط وبديهي يضمن تجربة استخدام مريحة لكم ولعملائكم.</li>
+            <li><strong>دعم فني مستمر:</strong> فريق دعم جاهز لمساعدتكم في أي وقت لضمان استمرارية العمل دون عوائق.</li>
+            <li><strong>اشتراك مجاني لمدة 3 أشهر:</strong> عرض خاص ضمن مرحلة الإطلاق يتيح لكم تجربة جميع الميزات دون أي
+                تكلفة.</li>
+            <li><strong>تحكم كامل:</strong> إمكانية إضافة وتحديث الخدمات، الصور، والعروض بأنفسكم بكل سهولة.</li>
+        </ul>
+        <h2 id="section-4">لماذا تنضمون إلينا الآن؟</h2>
+        <p>الانضمام في المرحلة الحالية يمنحكم ميزة تنافسية فريدة. فالمستخدمون اليوم يبحثون عن حلول جاهزة وسريعة، وقطاع
+            العيون بحاجة ماسة إلى منصة تجمع كل مقدمي الخدمة في مكان واحد.</p>
+        <ul>
+            <li><strong>ظهور أكبر للمنشآت الأولى:</strong> كن من أوائل المنضمين واحصل على أقصى استفادة من الظهور
+                والانتشار خلال فترة الإطلاق.</li>
+            <li><strong>تلبية طلب السوق:</strong> استجب لحاجة المستخدمين الملحة في إيجاد حلول سريعة وموثوقة لمشاكل
+                العيون.</li>
+            <li><strong>ريادة القطاع:</strong> كن جزءًا من المنصة التي ستصبح الوجهة الأولى لخدمات العيون في المنطقة.
+            </li>
+        </ul>
+        <h2 id="section-5">كيف تبدأ معنا؟ خطوات بسيطة نحو النجاح</h2>
+        <div class="step-guide">
+            <div class="step">
+                <span class="step-number">1</span>
+                <h3 id="section-5-1">تواصل معنا</h3>
+                <p>تواصل مع فريقنا لبدء عملية إعداد صفحتكم الخاصة على المنصة.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">2</span>
+                <h3 id="section-5-2">تجهيز البيانات</h3>
+                <p>نقوم بتجهيز بيانات منشأتكم وعرضها بشكل احترافي خلال 24 ساعة فقط.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">3</span>
+                <h3 id="section-5-3">استقبال العملاء</h3>
+                <p>ابدأ باستقبال الحجوزات والعملاء فورًا عبر صفحتك على المنصة.</p>
+            </div>
+        </div>
+        <div class="contact-section">
+            <h2 id="section-6">للتواصل والانضمام</h2>
+            <p>لا تفوتوا فرصة النمو والانتشار. تواصلوا معنا اليوم للانضمام إلى شبكة رواد خدمات العيون.</p>
+            <p><strong>واتساب:</strong> +966591778820</p>
+            <p><strong>البريد الإلكتروني:</strong> worldbareed@gmail.com</p>
+            <p><strong>اسم التطبيق:</strong> منصة عيون</p>
+            <p><strong>رابط التطبيق:</strong>
+                <a href='https://oyoun.base44.app' style='text-decoration: ltr'>الرابط </a>
+            </p>
+        </div>
+    </div>
+    <script>
+        const ctx = document.getElementById('impactChart').getContext('2d');
+        const impactChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['الوصول لعملاء جدد', 'سهولة إدارة الحجوزات', 'الظهور والانتشار الرقمي'],
+                datasets: [{
+                    label: 'قبل الانضمام للمنصة',
+                    data: [20, 30, 25],
+                    backgroundColor: 'rgba(174, 182, 191, 0.6)',
+                    borderColor: 'rgba(174, 182, 191, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'بعد الانضمام للمنصة',
+                    data: [90, 85, 95],
+                    backgroundColor: 'rgba(10, 147, 150, 0.7)',
+                    borderColor: 'rgba(10, 147, 150, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'تأثير الانضمام إلى منصة العيون على أداء المنشأة',
+                        font: {
+                            size: 18,
+                            family: 'Georgia, serif'
+                        },
+                        color: '#333',
+                        padding: {
+                            top: 10,
+                            bottom: 30
+                        }
+                    },
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        rtl: true,
+                        bodyFont: {
+                            family: 'Arial, sans-serif'
+                        },
+                        titleFont: {
+                            family: 'Arial, sans-serif'
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            callback: function (value) {
+                                return value + '%'
+                            }
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            font: {
+                                size: 14
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
